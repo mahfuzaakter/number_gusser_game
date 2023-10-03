@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guesser Game</title>
+</head>
+<body>
+    <script>
+        // Set the range for the game
+        let lower = 1;
+        let upper = 10;
+
+        // Generate a random number within the range
+        let correct_ans = Math.floor(Math.random() * (upper - lower + 1)) + lower;
+
+        // Initialize the number of chances
+        let chances = 3;
+
+        // Loop for 3 chances
+        while (chances > 0) {
+            // Ask the user to guess a number
+            let userGuess = parseInt(prompt(`Guess a number between ${lower} and ${upper}. You have ${chances} ${chances === 1 ? 'chance' : 'chances'} left.`));
+
+            // Check if the user's guess is correct
+            if (userGuess === correct_ans) {
+                alert("Congratulations! You guessed the correct number.");
+                break; // End the game if the guess is correct
+            } else if (userGuess < correct_ans) {
+                alert("Correct answer is greater!");
+            } else {
+                alert("Correct answer is smaller!");
+            }
+
+            // Decrement the number of chances
+            chances--;
+        }
+
+        // If the user couldn't guess correctly in 3 attempts, show a message
+        if (chances === 0) {
+            alert(`You lose! The correct number was ${correct_ans}.`);
+        }
+    </script>
+</body>
+</html>
